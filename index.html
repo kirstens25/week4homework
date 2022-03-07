@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/helper.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript FUNdamentals Quiz</h1>
+
+    </header>
+    <!-- Landing Page -->
+    <main>
+        <section id="landing">
+            <button class="Quiz-button" id="start-button">
+                Start Quiz
+            </button>
+        </section>
+
+
+
+        <!-- Question Page -->
+        <section class="hide" id="quiz-section">
+            <!-- Title -->
+            <h2 id="question-title">Question</h2>
+            <!-- Answer Options -->
+            <ul id="answer-options">
+                <li>
+                    <button class="answer-button">Answer 1</button>
+                </li>
+                <li>
+                    <button class="answer-button">Answer 2</button>
+                </li>
+                <li>
+                    <button class="answer-button">Answer 3</button>
+                </li>
+                <li>
+                    <button class="answer-button">Answer 4</button>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Summary Page -->
+        <section class="hide" id="summary-section">
+            <section>
+                <h2>All Done!</h2>
+                <label for="input-initials">Your Initials</label>
+                <input id="input-initials" type="text">
+                <button>Submit</button>
+            
+                <h2 id="initials">Initials</h2>
+            </section>
+            <section>
+                <h2 id="your-score">Your Score</h2>
+            </section>
+        </section>
+
+        <!-- High Score Page -->
+        <section class="hide" id="section-highscore">
+           <ul>
+               <li>Abbie - 4</li>
+               <li>Tim - 8</li>
+           </ul>
+            <!-- Back Button -->
+            <button class="options-button" id="back-button">Back</button>
+            <!-- Clear High Scores Button -->
+            <button class="options-button" id="clear-highscore-button">Clear High Scores</button>
+
+        </section>
+
+
+    </main>
+</body>
+<script src="scripts/main.js"></script>
+
+</html>
