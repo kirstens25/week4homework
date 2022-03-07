@@ -20,10 +20,15 @@
         <h1>JavaScript FUNdamentals Quiz</h1>
 
     </header>
+    <!-- Timer -->
+    <section class="hide" id="timer-section">
+        Time Remaining <span id="span-time">60</span>s
+    </section>
+    
     <!-- Landing Page -->
     <main>
         <section id="landing">
-            <button class="Quiz-button" id="start-button">
+            <button id="start-button">
                 Start Quiz
             </button>
         </section>
@@ -33,36 +38,34 @@
         <!-- Question Page -->
         <section class="hide" id="quiz-section">
             <!-- Title -->
-            <h2 id="question-title">Question</h2>
+            <h2 id="question-title"></h2>
             <!-- Answer Options -->
-            <ul id="answer-options">
-                <li>
-                    <button class="answer-button">Answer 1</button>
+            <ul id="question-choices">
+                <!-- <li>
+                    <button class="answer-button"></button>
                 </li>
                 <li>
-                    <button class="answer-button">Answer 2</button>
+                    <button class="answer-button"></button>
                 </li>
                 <li>
-                    <button class="answer-button">Answer 3</button>
+                    <button class="answer-button"></button>
                 </li>
                 <li>
-                    <button class="answer-button">Answer 4</button>
-                </li>
+                    <button class="answer-button"></button>
+                </li> -->
             </ul>
         </section>
 
         <!-- Summary Page -->
         <section class="hide" id="summary-section">
-            <section>
-                <h2>All Done!</h2>
+            <section id ="initials">
+                <h1>All Done!</h1>
                 <label for="input-initials">Your Initials</label>
                 <input id="input-initials" type="text">
-                <button>Submit</button>
-            
-                <h2 id="initials">Initials</h2>
-            </section>
+                <button id="your-score">Submit</button>
+                </section>
             <section>
-                <h2 id="your-score">Your Score</h2>
+                <h2>Your Score was: <span id="span-score"></span></h2>
             </section>
         </section>
 
@@ -82,6 +85,7 @@
 
     </main>
 </body>
+<script src="scripts/questions.js"></script>
 <script src="scripts/main.js"></script>
 
 </html>
