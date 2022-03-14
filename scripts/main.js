@@ -208,13 +208,14 @@ function renderHighscoreList() {
     for (let index = 0; index < highscore.length; index++) {
         const highscores = highscore[index];
 
-    }
-
-    // put it in the list
+        // put it in the list
     const li = document.createElement('li');
-    li.textContent = highScores.name + " -- " + highScore.highscore 
+    li.textContent = highscores.name + " -- " + highscores.highscore 
 
     listHighscores.appendChild(li);
+    }
+
+    
 
 
     // User clicks on Play Again button
