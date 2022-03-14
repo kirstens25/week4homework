@@ -164,10 +164,7 @@ function endGame() {
             highscore: timeRemaining
         }
 
-        /**
-         * @type {Array} existingHighscore
-         */
-        const existingHighscore = JSON.parse(localStorage.getItem('highscores') || '[]')
+        const existingHighscore = getHighScoresFromLocalStorage();
 
         // add in new questions
         existingHighscore.push(highScore)
@@ -190,10 +187,18 @@ sectionSummary.classList.add('hide')
 sectionHighScore.classList.remove('hide')
 }
 
+  /**
+         * @type {Array} existingHighscore
+         */
+function getHighScoresFromLocalStorage() {
+    return JSON.parse(
+        localStorage.getItem('highscores') || '[]'
+    )
+
+}
 
 
-
-// function renderHighscoreList() 
+function renderHighscoreList() 
 // HIGHSCORE Page
 // Show list of high scores
 
