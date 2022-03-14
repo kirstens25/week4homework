@@ -115,7 +115,7 @@ function showQuestion(questionIndex) {
             }
             // after incorrect or correct message shows, show next question
             // end game if completed last question
-            if (currentQuestion === questions.length-1) {
+            if (currentQuestion === questions.length - 1) {
                 console.log(currentQuestion)
                 endGame();
             } else {
@@ -141,10 +141,10 @@ function endGame() {
 
     // Hide question
     sectionQuiz.classList.add('hide');
-    
+
     // hide timer {
-        sectionTimer.classList.add('hide')
-    
+    sectionTimer.classList.add('hide')
+
 
     // show summary page
     sectionSummary.classList.remove('hide');
@@ -155,7 +155,6 @@ function endGame() {
     // user enter intials, press submit or press enter on keyboard
     formHighscore.addEventListener('submit', function (event) {
         event.preventDefault();
-
 
         // on submit, add user initials to local storage
         const userInput = inputName.value;
@@ -180,16 +179,18 @@ function endGame() {
 
 }
 function showHighScorePage() {
-// Hide end game screen
-sectionSummary.classList.add('hide')
+    // Hide end game screen
+    sectionSummary.classList.add('hide')
 
-// show high score section
-sectionHighScore.classList.remove('hide')
+    // show high score section
+    sectionHighScore.classList.remove('hide')
+
+    renderHighscoreList();
 }
 
-  /**
-         * @type {Array} existingHighscore
-         */
+/**
+       * @returns {Array}
+       */
 function getHighScoresFromLocalStorage() {
     return JSON.parse(
         localStorage.getItem('highscores') || '[]'
@@ -198,29 +199,38 @@ function getHighScoresFromLocalStorage() {
 }
 
 
-function renderHighscoreList() 
-// HIGHSCORE Page
-// Show list of high scores
+function renderHighscoreList() {
+    // HIGHSCORE Page
+    // Show list of high scores
+    const highscore = getHighScoresFromLocalStorage();
+    listHighscores.textcontent = "";
+    // create li for each item
+    for (let index = 0; index < highscore.length; index++) {
+        const highscores = highscore[index];
 
-// create li for each item
+    }
 
-// put it in the list
+    // put it in the list
+    const li = document.createElement('li');
+    li.textContent = highScores.name + " -- " + highScore.highscore 
+
+    listHighscores.appendChild(li);
 
 
+    // User clicks on Play Again button
+    // Redirect user to Landing Page
 
+    buttonPlayAgain.addEventListener('click', function (event) {
+        buttonPlayAgain.classList.remove('hide');
+        window.location.reload();
+    })
 
-// User clicks on Play Again button
-// Redirect user to Landing Page
+    // User clicks on Clear button
+    buttonClearHighscore.addEventListener('click', function (event) {
+        // Clear local storage
+        localStorage.setItem('highscore', "[]");
 
-buttonPlayAgain.addEventListener('click', function(event){
-    window.location.reload();
-})
-
-// User clicks on Clear button
-buttonClearHighscore.addEventListener('click', function(event){
-   // Clear local storage
-    localStorage.setItem('highscore', "[]");
-
-// Clear DOM
-listHighscores.textContent = ""; 
-})
+        // Clear DOM
+        listHighscores.textContent = "";
+    })
+}
