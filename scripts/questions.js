@@ -1,104 +1,160 @@
 const questions = [
     {
-        title: "How are you?",
+        title: "Is JavaScript a case-sensitive language??",
         choices: [
             {
-                title: "good",
+                title: "Yes",
                 correctAnswer: true,
             },
             {
-                title: "bad",
+                title: "No",
                 correctAnswer: false,
             },
         ],
     },
     {
-        title: "What day is it today?",
+        title: "hich of the following is the correct syntax to create a cookie using JavaScript?",
         choices: [
             {
-                title: "Saturday",
+                title: "A - document.cookie = 'key1 = value1; key2 = value2; expires = date';",
                 correctAnswer: true,
             },
             {
-                title: "Sunday",
+                title: "B - browser.cookie = 'key1 = value1; key2 = value2; expires = date';",
+                correctAnswer: false,
+            },
+            {
+                title: "C - window.cookie = 'key1 = value1; key2 = value2; expires = date';",
+                correctAnswer: false,
+            },
+            {
+                title: "D - navigator.cookie = 'key1 = value1; key2 = value2; expires = date';",
                 correctAnswer: false,
             },
         ],
     },
     {
-        title: "Do you like cheese",
+        title: "Which built-in method combines the text of two strings and returns a new string?",
         choices: [
             {
-                title: "Saturday",
+                title: "A - append()",
+                correctAnswer: false,
+            },
+            {
+                title: "B - concat()",
                 correctAnswer: true,
             },
             {
-                title: "Sunday",
+                title: "C - attach()",
+                correctAnswer: false,
+            },
+            {
+                title: "D - None of the above",
                 correctAnswer: false,
             },
         ],
     },
     {
-        title: "What day is it today2?",
+        title: "Which built-in method sorts the elements of an array?",
         choices: [
             {
-                title: "Saturday",
+                title: "A - changeOrder(order)",
+                correctAnswer: false,
+            },
+            {
+                title: "B - order()",
+                correctAnswer: false,
+            },
+            {
+                title: "C - sort()",
                 correctAnswer: true,
             },
             {
-                title: "Sunday",
+                title: "D - None of the above",
                 correctAnswer: false,
             },
         ],
     },
     {
-        title: "What day is it today?",
+        title: "Which of the following function of String object returns a number indicating the Unicode value of the character at the given index?",
         choices: [
             {
-                title: "Saturday",
+                title: "A - charAt()",
+                correctAnswer: false,
+            },
+            {
+                title: "B - charCodeAt()",
+                correctAnswer: false,
+            },
+            {
+                title: "C - concat()",
+                correctAnswer: false,
+            }, 
+            {
+                title: "D - indexOf()",
+                correctAnswer: true,
+            },
+        ],
+    },
+    {
+        title: "Which of the following function of String object creates an HTML anchor that is used as a hypertext target?",
+        choices: [
+            {
+                title: "A - anchor()",
                 correctAnswer: true,
             },
             {
-                title: "Sunday",
+                title: "B - link()",
+                correctAnswer: false,
+            },
+            {
+                title: "C - blink()",
+                correctAnswer: false,
+            },
+            {
+                title: "D - big()",
                 correctAnswer: false,
             },
         ],
     },
     {
-        title: "What day is it today?3",
+        title: "Which of the following function of String object causes a string to be displayed in fixed-pitch font as if it were in a <tt> tag?",
         choices: [
             {
-                title: "Saturday",
+                title: "A - fixed()",
                 correctAnswer: true,
             },
             {
-                title: "Sunday",
+                title: "B - big()",
+                correctAnswer: false,
+            },
+            {
+                title: "C - blink()",
+                correctAnswer: false,
+            },
+            {
+                title: "D - bold()",
                 correctAnswer: false,
             },
         ],
     },
     {
-        title: "What day is it today4?",
+        title: "Which of the following function of Array object creates a new array with all of the elements of this array for which the provided filtering function returns true?",
         choices: [
             {
-                title: "Saturday",
-                correctAnswer: true,
-            },
-            {
-                title: "Sunday",
+                title: "A - concat()",
                 correctAnswer: false,
             },
-        ],
-    },
-    {
-        title: "What day is it today5?",
-        choices: [
             {
-                title: "Saturday",
+                title: "B - every()",
+                correctAnswer: false,
+            },
+            {
+                title: "C - filter()",
                 correctAnswer: true,
             },
             {
-                title: "Sunday",
+                title: "D - some()",
                 correctAnswer: false,
             },
         ],

@@ -50,14 +50,11 @@
         <!-- Summary Page -->
         <section class="hide" id="summary-section">
             
-                <h1>All Done!</h1>
-                <section id ="initials">
-                    <form id="form-highscore">
+                <h1>All Done!</h1>                    <form id="form-highscore">
                 <label for="input-initials">Your Initials</label>
-                <input id="input-initials" type="text">
+                <input id="input-initials" type="text"></input>
                 <button id="your-score">Submit</button>
                 </form>
-                </section>
             <section>
                 <h2>Your Score was: <span id="span-score"></span></h2>
             </section>
@@ -65,12 +62,13 @@
 
         <!-- High Score Page -->
         <section class="hide" id="section-highscore">
-           <ul>
+           <h3>HIGH SCORES</h3>
+            <ul id="list-highscores">
                <li>Abbie - 4</li>
                <li>Tim - 8</li>
            </ul>
             <!-- Back Button -->
-            <button class="options-button" id="back-button">Back</button>
+            <button class="options-button" id="play-again-button">Play Again</button>
             <!-- Clear High Scores Button -->
             <button class="options-button" id="clear-highscore-button">Clear High Scores</button>
 

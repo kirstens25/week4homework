@@ -3,7 +3,6 @@ const sectionQuiz = document.getElementById('quiz-section');
 const sectionLanding = document.getElementById('landing');
 const sectionTimer = document.getElementById('timer-section');
 const spanTime = document.getElementById('span-time');
-const sectionInitials = document.getElementById('initials');
 const sectionSummary = document.getElementById('summary-section')
 const spanScore = document.getElementById('span-score')
 const questionTitle = document.getElementById('question-title')
@@ -13,7 +12,11 @@ const buttonYourScore = document.getElementById('your-score')
 const spanDeduction = document.getElementById('span-deduction-notice')
 const questionFeedback = document.getElementById('answer-feedback-section')
 const formHighscore = document.getElementById('form-highscore')
-const inputInitials = document.getElementById('input-initials')
+const inputName = document.getElementById('input-initials')
+const listHighscores = document.getElementById('list-highscores')
+
+const buttonPlayAgain = document.getElementById('play-again-button')
+const buttonClearHighscore = document.getElementById('clear-highscore-button')
 
 let = timerId = null;
 let = timeRemaining = 60;
@@ -90,7 +93,7 @@ function showQuestion(questionIndex) {
         button.classList.add('answer-button')
         button.textContent = choice.title;
         button.setAttribute('answer-is-right', choice.correctAnswer);
-    
+
 
         button.addEventListener("click", function (event) {
             // user clicked on correct answer
@@ -102,22 +105,24 @@ function showQuestion(questionIndex) {
                 showFeedback('Answer is right! Well done')
                 // // go to next question
                 // showQuestion(nextQuestion);
-                
+
             } else {
                 // deduct time by 10 sec
                 timeRemaining = timeRemaining - 10;
-                
-                // spanDeduction.textContent = "-10 seconds for wrong answer";
-                
+
                 // show feedback
-                showFeedback('Answer is wrong! Good try')
-  
+                showFeedback('Answer is wrong! Good try. Minus 10 seconds')
             }
-                // after incorrect or correct message shows, show next question
-                showQuestion(nextQuestion);
+            // after incorrect or correct message shows, show next question
             // end game if completed last question
-            if (nextQuestion >= questions.length) {
-                return endGame();
+            if (currentQuestion === questions.length-1) {
+                console.log(currentQuestion)
+                endGame();
+            } else {
+                currentQuestion++
+                showQuestion(currentQuestion);
+                console.log(currentQuestion)
+                console.log(questions.length)
             }
         });
         li.appendChild(button);
@@ -136,51 +141,81 @@ function endGame() {
 
     // Hide question
     sectionQuiz.classList.add('hide');
+    
+    // hide timer {
+        sectionTimer.classList.add('hide')
+    
 
     // show summary page
     sectionSummary.classList.remove('hide');
 
     // show their score (time remaining)
     spanScore.textContent = timeRemaining;
-    
+
     // user enter intials, press submit or press enter on keyboard
-    formHighscore.addEventListener('submit', function(event) {
+    formHighscore.addEventListener('submit', function (event) {
         event.preventDefault();
+
+
+        // on submit, add user initials to local storage
+        const userInput = inputName.value;
+        const highScore = {
+            name: userInput,
+            highscore: timeRemaining
+        }
+
+        /**
+         * @type {Array} existingHighscore
+         */
+        const existingHighscore = JSON.parse(localStorage.getItem('highscores') || '[]')
+
+        // add in new questions
+        existingHighscore.push(highScore)
+
+        // save to local storage
+        localStorage.setItem('highscores', JSON.stringify(existingHighscore));
+
+        // after submit, redirect user to hs page
+        console.log('done', existingHighscore);
+        showHighScorePage()
     })
 
-    // on submit, add user initials to local storage
-    const userInput = inputInitials.value;
-    const highScore = {
-        name: userInput,
-        highscore: timeRemaining
-    }
 
-    /**
-     * @type {Array} existingHighscore
-     */
-    const existingHighscore = JSON.parse(localStorage.getItem('highscores') || '[]')
+}
+function showHighScorePage() {
+// Hide end game screen
+sectionSummary.classList.add('hide')
 
-   // add new high score
-   existingHighscore.push(highScore)
+// show high score section
+sectionHighScore.classList.remove('hide')
+}
 
-   // save to local storage
-    localStorage.setItem('highscores',JSON.stringify(existingHighscore));
-}  
 
+
+
+// function renderHighscoreList() 
 // HIGHSCORE Page
 // Show list of high scores
 
+// create li for each item
+
+// put it in the list
 
 
-// User clicks on Back button
+
+
+// User clicks on Play Again button
 // Redirect user to Landing Page
 
-// User clicks on Clear button
-// Clear local storage
-// Clear DOM 
+buttonPlayAgain.addEventListener('click', function(event){
+    window.location.reload();
+})
 
-    // save initials and score to local storage
-    // go to high score page
-    // buttonYourScore.addEventListener('click', function (event) {
-    // sectionHighScore.classList.remove('hide');
-    //
+// User clicks on Clear button
+buttonClearHighscore.addEventListener('click', function(event){
+   // Clear local storage
+    localStorage.setItem('highscore', "[]");
+
+// Clear DOM
+listHighscores.textContent = ""; 
+})
