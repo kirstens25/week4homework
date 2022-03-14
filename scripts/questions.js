@@ -4,25 +4,104 @@ const questions = [
         choices: [
             {
                 title: "good",
-                isAnswer: true,
+                correctAnswer: true,
             },
             {
                 title: "bad",
-                isAnswer: false,
+                correctAnswer: false,
             },
         ],
     },
     {
-        title: "How are you?",
+        title: "What day is it today?",
         choices: [
             {
-                title: "good",
-                isAnswer: true,
+                title: "Saturday",
+                correctAnswer: true,
             },
             {
-                title: "bad",
-                isAnswer: false,
+                title: "Sunday",
+                correctAnswer: false,
             },
         ],
     },
+    {
+        title: "What day is it today1?",
+        choices: [
+            {
+                title: "Saturday",
+                correctAnswer: true,
+            },
+            {
+                title: "Sunday",
+                correctAnswer: false,
+            },
+        ],
+    },
+    {
+        title: "What day is it today2?",
+        choices: [
+            {
+                title: "Saturday",
+                correctAnswer: true,
+            },
+            {
+                title: "Sunday",
+                correctAnswer: false,
+            },
+        ],
+    },
+    {
+        title: "What day is it today?",
+        choices: [
+            {
+                title: "Saturday",
+                correctAnswer: true,
+            },
+            {
+                title: "Sunday",
+                correctAnswer: false,
+            },
+        ],
+    },
+    {
+        title: "What day is it today?3",
+        choices: [
+            {
+                title: "Saturday",
+                correctAnswer: true,
+            },
+            {
+                title: "Sunday",
+                correctAnswer: false,
+            },
+        ],
+    },
+    {
+        title: "What day is it today4?",
+        choices: [
+            {
+                title: "Saturday",
+                correctAnswer: true,
+            },
+            {
+                title: "Sunday",
+                correctAnswer: false,
+            },
+        ],
+    },
+    {
+        title: "What day is it today5?",
+        choices: [
+            {
+                title: "Saturday",
+                correctAnswer: true,
+            },
+            {
+                title: "Sunday",
+                correctAnswer: false,
+            },
+        ],
+    },
+
 ];

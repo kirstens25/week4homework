@@ -22,7 +22,7 @@
     </header>
     <!-- Timer -->
     <section class="hide" id="timer-section">
-        Time Remaining <span id="span-time">60</span>s
+        Time Remaining <span id="span-time">60</span>s <span id="span-deduction-notice"></span>
     </section>
     
     <!-- Landing Page -->
@@ -39,22 +39,14 @@
         <section class="hide" id="quiz-section">
             <!-- Title -->
             <h2 id="question-title"></h2>
+
             <!-- Answer Options -->
             <ul id="question-choices">
-                <!-- <li>
-                    <button class="answer-button"></button>
-                </li>
-                <li>
-                    <button class="answer-button"></button>
-                </li>
-                <li>
-                    <button class="answer-button"></button>
-                </li>
-                <li>
-                    <button class="answer-button"></button>
-                </li> -->
             </ul>
-        </section>
+              <!-- Answer feedback -->
+              <h3 class="hide" id="right-answer-section"> Well done - your answer was right!</h3>
+              <h3 class="hide" id="wrong-answer-section"> Unlucky - your answer was wrong.</h3>
+            </section>
 
         <!-- Summary Page -->
         <section class="hide" id="summary-section">
