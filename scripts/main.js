@@ -11,9 +11,12 @@ const questionChoice = document.getElementById('question-choices')
 const sectionHighScore = document.getElementById('section-highscore')
 const buttonYourScore = document.getElementById('your-score')
 const spanDeduction = document.getElementById('span-deduction-notice')
+const questionFeedback = document.getElementById('answer-feedback-section')
+const formHighscore = document.getElementById('form-highscore')
+const inputInitials = document.getElementById('input-initials')
 
 let = timerId = null;
-let = timeRemaining = 10;
+let = timeRemaining = 60;
 
 let = currentQuestion = 0;
 let = nextQuestion = currentQuestion + 1;
@@ -32,30 +35,20 @@ buttonStart.addEventListener('click', function (event) {
 
     showQuestion(currentQuestion);
 })
-// END GAME (summary page)
-function endGame() {
 
-    // timer stops
-    clearInterval(timerId);
-    spanTime.textContent = "0"
-    spanDeduction.classList.add('hide');
 
-    // Hide question
-    sectionQuiz.classList.add('hide');
-    // show their score (number of questions correctly answered)
+// Question Feedback
+function showFeedback(message, timeout = 1000) {
+    questionFeedback.textContent = message;
+    questionFeedback.classList.remove('hide')
 
-    // prompt user to enter their intials
-    sectionSummary.classList.remove('hide');
-    // 3. user press submit
-
-    // save initials and score to local storage
-    // go to high score page
-    // buttonYourScore.addEventListener('click', function (event) {
-    // sectionHighScore.classList.remove('hide');
-    // })
+    setTimeout(function () {
+        questionFeedback.classList.add('hide')
+    }, timeout);
 }
-// TIMER
 
+
+// TIMER
 function startTimer() {
     // Show section-timer
     sectionTimer.classList.remove('hide');
@@ -64,6 +57,7 @@ function startTimer() {
         timeRemaining = timeRemaining - 1
         spanTime.textContent = timeRemaining
 
+        // if user does not click any answer, timer will run out and game over screen appears
         // if time remaining < 0
         if (timeRemaining <= 0) {
             // end game
@@ -76,15 +70,14 @@ function startTimer() {
 
 function showQuestion(questionIndex) {
     const question = questions[questionIndex];
-
     const title = question.title;
     const choices = question.choices;
-
 
     // Show question title
     questionTitle.textContent = title;
     // clear question choices 
     questionChoice.textContent = "";
+
     // loop through choices
     // generate li for each choice
     for (let index = 0; index < choices.length; index++) {
@@ -93,63 +86,91 @@ function showQuestion(questionIndex) {
         const li = document.createElement('li');
         const button = document.createElement('button');
 
+
         button.classList.add('answer-button')
         button.textContent = choice.title;
-        button.addEventListener('click', checkAnswer);
+        button.setAttribute('answer-is-right', choice.correctAnswer);
+    
+
+        button.addEventListener("click", function (event) {
+            // user clicked on correct answer
+            const correctAnswer = event.target.getAttribute('answer-is-right') === 'true';
+            console.log(correctAnswer);
+            if (correctAnswer) {
+                // Add 1 Point to score count
+                // Show feedback
+                showFeedback('Answer is right! Well done')
+                // // go to next question
+                // showQuestion(nextQuestion);
+                
+            } else {
+                // deduct time by 10 sec
+                timeRemaining = timeRemaining - 10;
+                
+                // spanDeduction.textContent = "-10 seconds for wrong answer";
+                
+                // show feedback
+                showFeedback('Answer is wrong! Good try')
+  
+            }
+                // after incorrect or correct message shows, show next question
+                showQuestion(nextQuestion);
+            // end game if completed last question
+            if (nextQuestion >= questions.length) {
+                return endGame();
+            }
+        });
         li.appendChild(button);
 
         questionChoice.appendChild(li)
-
-        button.setAttribute('answer-is-right', choice.correctAnswer);
     }
 
-};
-
-function checkAnswer(event) {
-    // event.preventDefault();
-
-    const correctAnswer = event.target.getAttribute('answer-is-right') === 'true';
-    console.log(correctAnswer);
-
-    if (correctAnswer) {
-        // Add 1 Point to score count
-        // go to next question
-        showQuestion(nextQuestion);
-    }
-    else {
-        // deduct time by 10 sec
-        timeRemaining = timeRemaining -10;
-        spanDeduction.textContent = "-10 seconds for wrong answer";
-        // go to next question
-        showQuestion(nextQuestion);          
-        // end game if completed last question
-        if (currentQuestion +1 >= questions.length) {
-            return endGame();
-        }
-    }
 }
+// END GAME (summary page)
+function endGame() {
 
+    // timer stops
+    clearInterval(timerId);
+    spanTime.textContent = "0"
+    spanDeduction.classList.add('hide');
 
-    // SELECTION OPTIONS
-    // when user clicks correct answer show success and add point
-    // title - string
-    // choices
-    // title
-    // correct answer y/n?
-    // when user clicks incorrect answer show wrong and deduct 5 seconds
+    // Hide question
+    sectionQuiz.classList.add('hide');
 
-    // if user does not click any answer, timer will run out and game over screen appears
+    // show summary page
+    sectionSummary.classList.remove('hide');
 
+    // show their score (time remaining)
+    spanScore.textContent = timeRemaining;
+    
+    // user enter intials, press submit or press enter on keyboard
+    formHighscore.addEventListener('submit', function(event) {
+        event.preventDefault();
+    })
 
-    // after incorrect or correct message shows, show next question
+    // on submit, add user initials to local storage
+    const userInput = inputInitials.value;
+    const highScore = {
+        name: userInput,
+        highscore: timeRemaining
+    }
 
-    // when timer runs out, end game
+    /**
+     * @type {Array} existingHighscore
+     */
+    const existingHighscore = JSON.parse(localStorage.getItem('highscores') || '[]')
 
+   // add new high score
+   existingHighscore.push(highScore)
 
-
+   // save to local storage
+    localStorage.setItem('highscores',JSON.stringify(existingHighscore));
+}  
 
 // HIGHSCORE Page
 // Show list of high scores
+
+
 
 // User clicks on Back button
 // Redirect user to Landing Page
@@ -157,3 +178,9 @@ function checkAnswer(event) {
 // User clicks on Clear button
 // Clear local storage
 // Clear DOM 
+
+    // save initials and score to local storage
+    // go to high score page
+    // buttonYourScore.addEventListener('click', function (event) {
+    // sectionHighScore.classList.remove('hide');
+    //

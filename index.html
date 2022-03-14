@@ -44,17 +44,19 @@
             <ul id="question-choices">
             </ul>
               <!-- Answer feedback -->
-              <h3 class="hide" id="right-answer-section"> Well done - your answer was right!</h3>
-              <h3 class="hide" id="wrong-answer-section"> Unlucky - your answer was wrong.</h3>
+              <article class="hide" id="answer-feedback-section"> Well done - your answer was right!</article>
             </section>
 
         <!-- Summary Page -->
         <section class="hide" id="summary-section">
-            <section id ="initials">
+            
                 <h1>All Done!</h1>
+                <section id ="initials">
+                    <form id="form-highscore">
                 <label for="input-initials">Your Initials</label>
                 <input id="input-initials" type="text">
                 <button id="your-score">Submit</button>
+                </form>
                 </section>
             <section>
                 <h2>Your Score was: <span id="span-score"></span></h2>
